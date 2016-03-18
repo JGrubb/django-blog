@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-from ConfigParser import RawConfigParser
+from configparser import RawConfigParser
 
 config = RawConfigParser()
 
@@ -36,6 +36,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
+    'material',
+    'material.admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,8 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.redirects',
-    'debug_toolbar',
-    # 'django_markdown',
+    # 'debug_toolbar',
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -87,7 +89,7 @@ WSGI_APPLICATION = 'dj_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': config.get('database', 'DATABASE_NAME'),
         'USER': config.get('database', 'DATABASE_USER'),
         'PASS': config.get('database', 'DATABASE_PASSWORD'),
@@ -136,3 +138,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+SITE_ID = 1

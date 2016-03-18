@@ -10,26 +10,26 @@
     <title>Ignored By Dinosaurs</title>
 
 
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="{% static '/static/css/pure-min.css' %}">
 
 
     <!--[if lte IE 8]>
 
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+    <link rel="stylesheet" href="{% static '/static/css/grids-responsive-old-ie-min.css' %}">
 
 <![endif]-->
     <!--[if gt IE 8]><!-->
 
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+    <link rel="stylesheet" href="{% static '/static/css/grids-responsive-min.css' %}">
 
     <!--<![endif]-->
 
 
     <!--[if lte IE 8]>
-        <link rel="stylesheet" href="{% static  'blog/../../../static/css/layouts/blog-old-ie.css' %}">
+        <link rel="stylesheet" href="{% static  '/static/css/layouts/blog-old-ie.css' %}">
     <![endif]-->
     <!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="{% static 'blog/../../../static/css/layouts/blog.css' %}">
+    <link rel="stylesheet" href="{% static '/static/css/layouts/blog.css' %}">
     <!--<![endif]-->
 </head>
 <body>

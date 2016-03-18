@@ -15,7 +15,7 @@ def create_redirects(apps):
             '{:02}'.format(post.pub_date.month),
             post.slug
         ])
-        new_path = "-".join([str(post.id), post.slug])
+        new_path = "/posts/" + "-".join([str(post.id), post.slug])
         r = Redirect(site=Site.objects.get_current(), old_path=old_path, new_path=new_path)
         r.save()
 
