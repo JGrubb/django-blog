@@ -1,12 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.views import generic
-from django.core.urlresolvers import reverse
-from .models import Post
+from .models import Post, Tag
+
 
 # Create your views here.
 
 class IndexView(generic.ListView):
-
     def get_queryset(self):
         """Return the last five published questions."""
         return Post.objects.filter(
@@ -27,3 +26,11 @@ class ArchiveView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = Post
+
+
+class TagsView(generic.ListView):
+    template_name = 'blog/archive_list.html'
+
+    def get_queryset(self):
+        self.term = get_object_or_404(Tag, slug=self.args[0])
+        return Post.objects.filter(tags=self.term).order_by('-pub_date')

@@ -1,6 +1,5 @@
 {% load markdownify %}
 <div class="posts">
-    <h1 class="content-subhead">Recent Posts</h1>
 
     {% for post in post_list %}
         <section class="post">
@@ -12,7 +11,7 @@
 
                 <p class="post-meta">
                     <time>{{ post.pub_date }}</time> in {% for tag in post.tags.all %}
-                    <span class="post-category post-category-{{ tag.id }}">{{ tag.name }}</span>
+                    <a href="{% url "tags" tag.slug %}" class="post-category post-category-{{ tag.id }}">{{ tag.name }}</a>
                     {% endfor %}
                 </p>
             </header>
