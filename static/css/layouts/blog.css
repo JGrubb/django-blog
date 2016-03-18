@@ -150,6 +150,30 @@ h3 {
     .post-category-6 {
         background: #222;
     }
+    .post-category-4 {
+        background: #9e259b;
+    }
+    .post-category-5 {
+        background: #2a9e30;
+    }
+    .post-category-15 {
+        background: #dd6d2b;
+    }
+    .post-category-19 {
+        background: #2a9e30;
+    }
+    .post-category-16 {
+        background: #fffc18;
+        color: #444;
+    }
+    .post-category-12 {
+        background: #03dfff;
+        color: #444;
+    }
+    .post-category-8 {
+        background: #7d8fff;
+        /*color: #444;*/
+    }
 
 .post-images {
     margin: 1em 0;
