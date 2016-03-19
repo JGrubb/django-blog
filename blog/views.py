@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.views import generic
 from .models import Post, Tag
+from django.contrib.sitemaps import Sitemap
 
 
 # Create your views here.
@@ -34,3 +35,13 @@ class TagsView(generic.ListView):
     def get_queryset(self):
         self.term = get_object_or_404(Tag, slug=self.args[0])
         return Post.objects.filter(tags=self.term).order_by('-pub_date')
+
+class BlogSitemap(Sitemap):
+    changefreq = "never"
+    priority = 0.5
+
+    def items(self):
+        return Post.objects.filter(published=True).order_by('-pub_date')
+
+    def lastmod(self, obj):
+        return obj.pub_date
