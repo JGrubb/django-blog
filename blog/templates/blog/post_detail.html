@@ -16,7 +16,7 @@
         </div>
     {% if user.is_authenticated %}
     <div class="edit-link">
-        <a class="" href="{% url "admin:blog_post_change" post.id %}">Edit</a>
+        <a class="pure-button pure-button-primary" href="{% url "admin:blog_post_change" post.id %}">Edit</a>
     </div>
     {% endif %}
     </section>
