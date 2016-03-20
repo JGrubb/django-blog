@@ -9,6 +9,10 @@ a {
     color: rgb(61, 146, 201);
 }
 
+img {
+    max-width: 100%;
+}
+
 h2 a {
     color: #133762;
 }
