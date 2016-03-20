@@ -15,23 +15,22 @@
             {{ post.body | markdown | safe }}
 
             <div id="disqus_thread"></div>
-<script>
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-
-s.src = '//ignoredbydinosaurs.disqus.com/embed.js';
-
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            <script>
+                (function () { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = '//ignoredbydinosaurs.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+                powered by Disqus.</a></noscript>
         </div>
-    {% if user.is_authenticated %}
-    <div class="edit-link">
-        <a class="pure-button pure-button-primary" href="{% url "admin:blog_post_change" post.id %}">Edit</a>
-    </div>
-    {% endif %}
+        {% if user.is_authenticated %}
+            <div class="edit-link">
+                <a class="pure-button pure-button-primary" href="{% url "admin:blog_post_change" post.id %}">Edit</a>
+            </div>
+        {% endif %}
     </section>
 
 {% endblock %}
