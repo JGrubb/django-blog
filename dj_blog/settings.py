@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.redirects',
     'django.contrib.sitemaps',
+    'django.contrib.syndication',
     # 'debug_toolbar',
 
 ]
