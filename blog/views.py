@@ -34,7 +34,11 @@ class TagsView(generic.ListView):
 
     def get_queryset(self):
         self.term = get_object_or_404(Tag, slug=self.args[0])
-        return Post.objects.filter(tags=self.term).order_by('-pub_date')
+        return Post.objects.filter(
+            tags=self.term
+        ).filter(
+            published=True
+        ).order_by('-pub_date')
 
 class BlogSitemap(Sitemap):
     changefreq = "never"
