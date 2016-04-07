@@ -28,6 +28,8 @@ class ArchiveView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Post
 
+    def get_queryset(self):
+
 
 class TagsView(generic.ListView):
     template_name = 'blog/archive_list.html'
@@ -39,6 +41,7 @@ class TagsView(generic.ListView):
         ).filter(
             published=True
         ).order_by('-pub_date')
+
 
 class BlogSitemap(Sitemap):
     changefreq = "never"
