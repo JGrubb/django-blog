@@ -28,7 +28,7 @@ class ArchiveView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Post
 
-    def get_queryset(self):
+    # def get_queryset(self):
 
 
 class TagsView(generic.ListView):
