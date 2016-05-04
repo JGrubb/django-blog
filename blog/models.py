@@ -25,6 +25,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    @models.permalink
     def get_absolute_url(self):
-        return "/posts/{}-{}".format(self.id, self.slug)
+        return ('blog:detail', [self.id, self.slug])
 

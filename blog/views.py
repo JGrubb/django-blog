@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.views import generic
 from .models import Post, Tag
 from django.contrib.sitemaps import Sitemap
@@ -28,6 +28,12 @@ class ArchiveView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Post
 
+    def dispatch(self, request, *args, **kwargs):
+        object = get_object_or_404(Post, pk=self.kwargs['pk'])
+        if object.slug != self.kwargs['slug']:
+            return redirect(object, permanent=True)
+        return super(DetailView, self).dispatch(request, *args, **kwargs)
+
 
 class TagsView(generic.ListView):
     template_name = 'blog/archive_list.html'
@@ -39,6 +45,7 @@ class TagsView(generic.ListView):
         ).filter(
             published=True
         ).order_by('-pub_date')
+
 
 class BlogSitemap(Sitemap):
     changefreq = "never"
