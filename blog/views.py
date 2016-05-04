@@ -48,11 +48,11 @@ class TagsView(generic.ListView):
 
 
 class BlogSitemap(Sitemap):
-    changefreq = "never"
+    changefreq = "monthly"
     priority = 0.5
 
     def items(self):
         return Post.objects.filter(published=True).order_by('-pub_date')
 
     def lastmod(self, obj):
-        return obj.pub_date
+        return obj.updated
