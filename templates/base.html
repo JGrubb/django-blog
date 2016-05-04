@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ post.body | truncatechars_html:260 | striptags | safe }}">
 
-    <title>Ignored By Dinosaurs</title>
+    <title>Ignored By Dinosaurs{% if post.title %} | {{ post.title }}{% endif %}</title>
 
 
     <link rel="stylesheet" href="{% static '/static/css/pure-min.css' %}">
