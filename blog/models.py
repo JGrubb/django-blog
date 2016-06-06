@@ -14,6 +14,12 @@ class Tag(models.Model):
         return self.name
 
 class Post(models.Model):
+
+    def prev_post_choices(pub_date):
+        return {
+            'pub_date__lte': pub_date
+        }
+
     title = models.CharField(max_length=255)
     body = models.TextField()
     summary = models.TextField(null=True, blank=True)
@@ -23,7 +29,11 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    previous = models.ForeignKey('self', related_name='previous_post', blank=True, null=True, on_delete=None, db_index=True)
+    previous = models.ForeignKey('self',
+                                 related_name='previous_post',
+                                 blank=True,
+                                 null=True,
+                                 on_delete=None)
 
     def __str__(self):
         return self.title
@@ -31,4 +41,7 @@ class Post(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('blog:detail', [self.id, self.slug])
+
+    class Meta:
+        ordering = ['-pub_date']
 
