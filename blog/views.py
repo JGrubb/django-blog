@@ -14,7 +14,7 @@ class IndexView(generic.ListView):
         ).order_by('-pub_date')[:4]
 
 
-class ArchiveView(generic.ListView):
+class ArchiveView(generic.ArchiveIndexView):
     model = Post
     template_name = 'blog/archive_list.html'
     context_object_name = 'post_list'

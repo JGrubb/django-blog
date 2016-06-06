@@ -23,6 +23,7 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    previous = models.ForeignKey('self', related_name='previous_post', blank=True, null=True, on_delete=None, db_index=True)
 
     def __str__(self):
         return self.title

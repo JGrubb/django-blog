@@ -13,7 +13,14 @@
 
         <div class="post-description">
             {{ post.body | markdown | safe }}
-
+            {% if post.previous %}
+                <a class="pure-button" href="{% url "blog:detail" post.previous.id post.previous.slug %}">previous: {{ post.previous.title }}</a>
+            {% endif %}
+            {% with next_post=post.previous_post.get %}
+                {% if next_post %}
+                <a class="pure-button" href="{% url "blog:detail" next_post.id next_post.slug%}">next: {{ next_post.title }}</a>
+                {% endif %}
+            {% endwith %}
             <div id="disqus_thread"></div>
             <script>
                 (function () { // DON'T EDIT BELOW THIS LINE
