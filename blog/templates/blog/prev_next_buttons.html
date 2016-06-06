@@ -1,0 +1,15 @@
+{% if post.previous %}
+    <small>
+        <a class="pure-button pure-button-primary"
+           href="{% url "blog:detail" post.previous.id post.previous.slug %}">&larr; previous: {{ post.previous.title }}</a>
+    </small>
+{% endif %}
+{% with next_post=post.previous_post.get %}
+    {% if next_post %}
+        <small>
+            <a class="pure-button pure-button-primary"
+               href="{% url "blog:detail" next_post.id next_post.slug %}">next: {{ next_post.title }} &rarr;</a>
+        </small>
+
+    {% endif %}
+{% endwith %}
