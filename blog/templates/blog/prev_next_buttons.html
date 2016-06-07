@@ -1,7 +1,8 @@
 {% if post.previous %}
     <small>
         <a class="pure-button pure-button-primary"
-           href="{% url "blog:detail" post.previous.id post.previous.slug %}">&larr; previous: {{ post.previous.title }}</a>
+           href="{% url "blog:detail" post.previous.id post.previous.slug %}">&larr;
+            previous: {{ post.previous.title }}</a>
     </small>
 {% endif %}
 {% with next=post.previous_post %}
@@ -10,6 +11,5 @@
             <a class="pure-button pure-button-primary"
                href="{% url "blog:detail" next.id next.slug %}">next: {{ next.title }} &rarr;</a>
         </small>
-
     {% endif %}
 {% endwith %}

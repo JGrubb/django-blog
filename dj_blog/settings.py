@@ -26,8 +26,13 @@ config.read(os.path.join(BASE_DIR, 'settings.ini'))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config.get('secrets', 'SECRET_KEY')
 
+def debug():
+    if config.get('debug', 'DEBUG') == 'True':
+         return True
+    else:
+         return False
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config.get('debug', 'DEBUG')
+DEBUG = debug()
 
 ALLOWED_HOSTS = ['www.ignoredbydinosaurs.com']
 
@@ -46,9 +51,10 @@ INSTALLED_APPS = [
     'django.contrib.redirects',
     'django.contrib.sitemaps',
     'django.contrib.syndication',
-    'debug_toolbar',
-
 ]
+
+if DEBUG:
+    INSTALLED_APPS.append('debug_toolbar')
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
