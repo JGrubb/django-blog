@@ -29,7 +29,7 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    previous = models.ForeignKey('self',
+    previous = models.OneToOneField('self',
                                  related_name='previous_post',
                                  blank=True,
                                  null=True,

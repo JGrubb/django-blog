@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.redirects',
     'django.contrib.sitemaps',
     'django.contrib.syndication',
-    # 'debug_toolbar',
+    'debug_toolbar',
 
 ]
 
