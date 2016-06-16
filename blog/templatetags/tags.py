@@ -9,6 +9,6 @@ def get_related(post):
         tags__in=post.tags.all()
     ).exclude(
         pk=post.id
-    )[:3]
+    ).distinct()[:3]
 
     return posts
