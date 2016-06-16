@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load markdownify %}
+{% load tags %}
 
 {% block content %}
     <section class="post">
@@ -14,6 +15,24 @@
 
         <div class="post-description">
             {{ post.body | markdown | safe }}
+
+            <div id="related">
+                {% get_related post as related %}
+                {% if related %}
+                <h3>(semi)Related</h3>
+                <ul>
+                    {% for item in related %}
+                    <li><a href="{% url "blog:detail" item.id item.slug %}">{{ item.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+            {% if user.is_authenticated %}
+            <div class="edit-link">
+                <a class="pure-button" href="{% url "admin:blog_post_change" post.id %}">Edit</a>
+            </div>
+        {% endif %}
             {% include 'blog/prev_next_buttons.html' %}
             <div id="disqus_thread"></div>
             <script>
@@ -27,11 +46,6 @@
             <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
                 powered by Disqus.</a></noscript>
         </div>
-        {% if user.is_authenticated %}
-            <div class="edit-link">
-                <a class="pure-button pure-button-primary" href="{% url "admin:blog_post_change" post.id %}">Edit</a>
-            </div>
-        {% endif %}
     </section>
 
 {% endblock %}
