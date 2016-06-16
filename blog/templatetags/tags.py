@@ -7,6 +7,8 @@ register = template.Library()
 def get_related(post):
     posts = Post.objects.filter(
         tags__in=post.tags.all()
+    ).filter(
+        published=True
     ).exclude(
         pk=post.id
     ).distinct()[:3]
