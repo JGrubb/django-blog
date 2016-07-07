@@ -12,7 +12,10 @@ relationships:
   database: "db:postgresql"
 
 disk: 512
+mounts:
+  "uploads": "shared:files/uploads"
 
 hooks:
   build: |
+    apt-get install libpq-dev python-dev
     pip install -r requirements.txt
