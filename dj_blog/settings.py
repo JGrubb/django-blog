@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.redirects',
     'django.contrib.sitemaps',
     'django.contrib.syndication',
+    'django.contrib.postgres'
 ]
 
 if DEBUG:
