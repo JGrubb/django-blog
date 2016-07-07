@@ -103,7 +103,7 @@ relationships = os.getenv('PLATFORM_RELATIONSHIPS')
 if relationships:
     relationships = json.decode(base64.decodebytes(relationships.encode()))
     db_settings = relationships['database']
-    
+
 
 DATABASES = {
     'default': {
