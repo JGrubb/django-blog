@@ -1,8 +1,8 @@
 name: app
 type: python:3.5
 dependencies:
-python:
-  uwsgi: "*"
+  python:
+    uwsgi: "*"
 web:
   commands:
     start: "uwsgi --ini conf/uwsgi.ini"
