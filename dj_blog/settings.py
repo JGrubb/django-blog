@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-import json
-import base64
 from configparser import RawConfigParser
 
 config = RawConfigParser()
@@ -36,10 +34,7 @@ def debug():
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = debug()
 
-ALLOWED_HOSTS = [
-    'www.ignoredbydinosaurs.com',
-
-]
+ALLOWED_HOSTS = ['www.ignoredbydinosaurs.com']
 
 
 # Application definition
@@ -98,12 +93,6 @@ WSGI_APPLICATION = 'dj_blog.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-relationships = os.getenv('PLATFORM_RELATIONSHIPS')
-if relationships:
-    relationships = json.decode(base64.decodebytes(relationships.encode()))
-    db_settings = relationships['database']
-
 
 DATABASES = {
     'default': {
