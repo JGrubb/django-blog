@@ -11,7 +11,7 @@ class IndexView(generic.ListView):
         """Return the last five published questions."""
         return Post.objects.filter(
             published=True
-        ).order_by('-pub_date')[:4]
+        ).order_by('-pub_date').prefetch_related('tags')[:4]
 
 
 class ArchiveView(generic.ArchiveIndexView):
@@ -22,7 +22,7 @@ class ArchiveView(generic.ArchiveIndexView):
     def get_queryset(self):
         return Post.objects.filter(
             published=True
-        ).order_by('-pub_date')
+        ).order_by('-pub_date').prefetch_related('tags')
 
 
 class DetailView(generic.DetailView):
