@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import json
 from configparser import RawConfigParser
 
 config = RawConfigParser()
@@ -18,23 +19,56 @@ config = RawConfigParser()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-config.read(os.path.join(BASE_DIR, 'settings.ini'))
+relationships = os.getenv('PLATFORM_RELATIONSHIPS')
+variables = os.getenv('PLATFORM_VARIABLES')
+
+if relationships:
+    relationships = json.decode(base64.decodebytes(relationships.encode()))
+    db_settings = relationships['database']
+else:
+    config.read(os.path.join(BASE_DIR, 'settings.ini'))
+    db_settings = {
+        'path': config.get('database', 'DATABASE_NAME'),
+        'username': config.get('database', 'DATABASE_USER'),
+        'password': config.get('database', 'DATABASE_PASSWORD'),
+        'host': 'localhost',
+        'port': 5432
+    }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': db_settings['path'],
+        'USER': db_settings['username'],
+        'PASSWORD': db_settings['password'],
+        'HOST': db_settings['host'],
+        'PORT': db_settings['port']
+    }
+}
+
+if variables:
+    variables = json.decode(base64.decodebytes(variables.encode()))
+    SECRET_KEY = variables['secret_key']
+else:
+    SECRET_KEY = config.get('secrets', 'SECRET_KEY')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config.get('secrets', 'SECRET_KEY')
 
-def debug():
-    if config.get('debug', 'DEBUG') == 'True':
-         return True
-    else:
-         return False
+# def debug():
+#     if config.get('debug', 'DEBUG') == 'True':
+#          return True
+#     else:
+#          return False
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = debug()
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.ignoredbydinosaurs.com']
+ALLOWED_HOSTS = [
+    'www.ignoredbydinosaurs.com'
+    ]
 
 
 # Application definition
