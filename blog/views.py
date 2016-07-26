@@ -4,8 +4,6 @@ from .models import Post, Tag
 from django.contrib.sitemaps import Sitemap
 
 
-# Create your views here.
-
 class IndexView(generic.ListView):
     def get_queryset(self):
         """Return the last five published questions."""
