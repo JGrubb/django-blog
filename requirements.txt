@@ -1,7 +1,7 @@
-Django==1.9.4
+Django==1.9.8
 django-debug-toolbar==1.4
 django-material==0.7.0
-mistune==0.7.2
+mistune==0.7.3
 pgsql==1.1
 psycopg2==2.6.1
 Pygments==2.1.3
