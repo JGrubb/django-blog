@@ -49,7 +49,7 @@ DATABASES = {
 
 if variables:
     variables = json.loads(base64.b64decode(variables).decode('utf-8'))
-    SECRET_KEY = variables['secret_key']
+    SECRET_KEY = variables['SECRET_KEY']
 else:
     SECRET_KEY = config.get('secrets', 'SECRET_KEY')
 
