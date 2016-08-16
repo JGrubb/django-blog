@@ -64,7 +64,7 @@ else:
 #     else:
 #          return False
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = variables['debug']
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'www.ignoredbydinosaurs.com',
