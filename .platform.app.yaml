@@ -7,8 +7,10 @@ web:
   commands:
     start: "gunicorn -w 4 -b unix:$SOCKET dj_blog.wsgi:application"
   locations:
+    "/static":
+      root: "static"
+      passthru: true
     "/":
-      root: "public"
       passthru: true
 
 relationships:
