@@ -24,7 +24,7 @@ relationships = os.getenv('PLATFORM_RELATIONSHIPS')
 variables = os.getenv('PLATFORM_VARIABLES')
 
 if relationships:
-    relationships = json.loads(base64.decodebytes(relationships.encode()))
+    relationships = json.loads(base64.b64decode(relationships).decode('utf-8'))
     db_settings = relationships['database']
 else:
     config.read(os.path.join(BASE_DIR, 'settings.ini'))
