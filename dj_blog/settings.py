@@ -48,7 +48,7 @@ DATABASES = {
 }
 
 if variables:
-    variables = json.decode(base64.decodebytes(variables.encode()))
+    variables = json.loads(base64.b64decode(variables).decode('utf-8'))
     SECRET_KEY = variables['secret_key']
 else:
     SECRET_KEY = config.get('secrets', 'SECRET_KEY')
