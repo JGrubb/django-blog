@@ -64,10 +64,11 @@ else:
 #     else:
 #          return False
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = variables['debug']
 
 ALLOWED_HOSTS = [
-    'www.ignoredbydinosaurs.com'
+    'www.ignoredbydinosaurs.com',
+    'master-jnazlee543ufy.us.platform.sh'
     ]
 
 
@@ -131,15 +132,15 @@ WSGI_APPLICATION = 'dj_blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config.get('database', 'DATABASE_NAME'),
-        'USER': config.get('database', 'DATABASE_USER'),
-        'PASSWORD': config.get('database', 'DATABASE_PASSWORD'),
-        'HOST': 'localhost'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config.get('database', 'DATABASE_NAME'),
+#         'USER': config.get('database', 'DATABASE_USER'),
+#         'PASSWORD': config.get('database', 'DATABASE_PASSWORD'),
+#         'HOST': 'localhost'
+#     }
+# }
 
 
 # Password validation
