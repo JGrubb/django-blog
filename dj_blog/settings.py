@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import json
+import base64
 from configparser import RawConfigParser
 
 config = RawConfigParser()
@@ -23,7 +24,7 @@ relationships = os.getenv('PLATFORM_RELATIONSHIPS')
 variables = os.getenv('PLATFORM_VARIABLES')
 
 if relationships:
-    relationships = json.JSONDecoder.decode(base64.decodebytes(relationships.encode()))
+    relationships = json.loads(base64.decodebytes(relationships.encode()))
     db_settings = relationships['database']
 else:
     config.read(os.path.join(BASE_DIR, 'settings.ini'))
