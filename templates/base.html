@@ -8,6 +8,7 @@
     <meta name="description" content="{{ post.body | truncatechars_html:260 | striptags | safe }}">
     <link rel="alternate" type="application/rss+xml" title="IBD RSS" href="/posts/rss.xml"/>
     <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    <link rel="shortcut icon" href="/static/favicon.png">
 
     <title>Ignored By Dinosaurs{% if post.title %} | {{ post.title }}{% endif %}</title>
     <link rel="stylesheet" href="{% static '/static/css/pure-min.css' %}">
