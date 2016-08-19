@@ -69,7 +69,7 @@ DEBUG = False if (os.getenv('PLATFORM_ENVIRONMENT') == 'master') else True
 
 ALLOWED_HOSTS = [
     'www.ignoredbydinosaurs.com',
-    'master-jnazlee543ufy.us.platform.sh'
+    'www---master-jnazlee543ufy.us.platform.sh'
     ]
 
 
