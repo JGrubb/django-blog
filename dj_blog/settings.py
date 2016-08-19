@@ -65,7 +65,7 @@ else:
 #     else:
 #          return False
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False if (os.getenv('PLATFORM_ENVIRONMENT') == 'master') else True
 
 ALLOWED_HOSTS = [
     'www.ignoredbydinosaurs.com',
@@ -126,23 +126,7 @@ TEMPLATES = [
     },
 ]
 
-
 WSGI_APPLICATION = 'dj_blog.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': config.get('database', 'DATABASE_NAME'),
-#         'USER': config.get('database', 'DATABASE_USER'),
-#         'PASSWORD': config.get('database', 'DATABASE_PASSWORD'),
-#         'HOST': 'localhost'
-#     }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -180,7 +164,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/app/static/'
+STATIC_ROOT = 'collected'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
