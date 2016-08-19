@@ -14,7 +14,7 @@ web:
       passthru: true
 
 relationships:
-  database: "blogdb:postgresql"
+  database: "db:postgresql"
 
 disk: 512
 mounts:
