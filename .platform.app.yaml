@@ -12,6 +12,9 @@ web:
       passthru: true
     "/":
       passthru: true
+    "/uploads":
+      pasthru: false
+      root: "uploads"
 
 relationships:
   database: "db:postgresql"
