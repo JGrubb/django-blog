@@ -9,12 +9,12 @@ web:
   locations:
     "/static":
       root: "static"
-      passthru: true
+      passthru: false
     "/":
       passthru: true
     "/uploads":
-      pasthru: false
       root: "uploads"
+      passthru: false
 
 relationships:
   database: "db:postgresql"
