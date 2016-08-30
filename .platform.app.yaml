@@ -9,11 +9,14 @@ web:
   locations:
     "/static":
       root: "static"
+      expires: 24h
       passthru: false
     "/":
       passthru: true
+      expires: 10m
     "/uploads":
       root: "uploads"
+      expires: 30d
       passthru: false
 
 relationships:
